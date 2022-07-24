@@ -1,0 +1,14 @@
+@mixin tamaño($width,$heigth){
+    width: $width;
+    height: $heigth;    
+}
+
+
+@mixin  flex($wrap,$direction,$aItems,$justify,$aContent){
+    display: flex;
+    flex-wrap: $wrap;
+    flex-direction: $direction;
+    align-items: $aItems;
+    justify-content: $justify ;
+    align-content: $aContent;
+}

@@ -1,191 +1,212 @@
+@import "utilities/variables";
+$color1: #ffe6cd;
+$color2:#ff8345; 
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 .contenedor{
+    background-color: black;
     display: grid;
     grid-template-rows:1fr 0.25fr 3fr  2fr  0.5fr;
+    grid-template-columns:0.25fr 1.5fr 0.25fr;
+    grid-template-areas: 
+    "cabezera cabezera cabezera" 
+    "navegacion navegacion navegacion"
+    ". principio ."
+    ". noticias ."
+    "pie pie pie"
+    ;
+    justify-items: center;
+    align-items: stretch;
+}
+.cabezera{
+    background-image: linear-gradient(to top right, rgba(213,78,57,1) 0%, rgba(241,145,74,1) 50%, rgba(166,137,83,1) 100%);
+    @include tamaño(100%,auto);
+    grid-area: cabezera;
+    color: $color1;
+    @include flex(nowrap,row,center,center,normal);
+    img{
+        margin-left: 0.5rem;
+        @include tamaño(40%,85%);
+    }
+    div{
+        @include flex(nowrap,column,center,flex-start,normal);
+        h1{  
+            @include tamaño(50%,auto);
+        }
+    }
+}
+    
+.navegacion{
+    background-color: $color1;
+    grid-area: navegacion;
+    @include tamaño (100%,3rem);
+    ul{
+        @include flex(nowrap,row,normal,space-evenly,normal);
+        list-style: none;
+        li{
+            margin-top: 1rem;
+            text-align: center;
+            border-radius: 1rem;
+            width: 5rem;
+            @include tamaño (5rem,1.5rem);
+            border: 0.1rem black solid;
+            background-color: black;
+            a{
+                text-decoration: none;
+                &:visited{
+                    color:$color1;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.principio{
+    margin-top: 1rem;
+    grid-area: principio;
+    @include tamaño (80%,17rem);
+    @include flex(wrap,row,center,flex-start,normal);
+    h2{
+        color: $color2;
+        padding-left: 20%;
+        @include tamaño (100%,auto);
+    }
+    img{
+        @include tamaño (25%,25%);
+        display: none;
+    }
+    p{
+        color: $color1;
+        padding-left: 1rem;
+        @include tamaño (75%,auto);
+    }
+}
+.noticias{
+    margin-top: 2rem;
+    color: $color1;
+    grid-area: noticias;
+    @include tamaño (80%,17rem);
+    background-color: black;
+    @include flex(nowrap,column,center,normal,normal);
+    h3{
+        // padding-bottom: 1rem;
+        // padding-right: 1rem;
+    }
+}
+.tarjeta{
+    margin-top: 1rem;
+    background-color: black;
+    @include flex(wrap,row,flex-start,space-around,flex-start);
+    @include tamaño (100%,auto);
+    h4{
+        color: $color2;
+        text-align: start;
+        margin-top: 0.5rem;
+        padding-left: 1rem;
+        @include tamaño (100%,auto);
+    }
+    img{
+        border-radius: 6rem;
+        @include tamaño (5rem,3rem);
+    }
+    p{
+        color: $color1;
+        @include tamaño (40%,auto);
+        margin-left: 1rem;
+    }
+}
+.pie{
+    align-self: end;
+    @include tamaño(100%,3rem);
+    background-image: linear-gradient(to top right, rgba(213,78,57,1) 0%, rgba(241,145,74,1) 50%, rgba(166,137,83,1) 100%);
+    color: $color1;
+    grid-area: pie;
+    @include flex(nowrap,row,center,space-evenly,normal);
+    p{
+        text-align: center;
+        @include tamaño(10rem,2rem);
+    }
+}
+
+/*estilos proyectos*/
+.divProyectos{
+    background-color: black;
+    display: grid;
+    grid-template-rows:0.25fr 0.10fr 3fr  0.10fr;
     grid-template-columns: 0.25fr 1.5fr 0.25fr  ;
     grid-template-areas: 
                 "cabezera cabezera cabezera" 
                 "navegacion navegacion navegacion"
-                ". principio ."
-                ". noticias ."
+                "divProyectos divProyectos divProyectos"
                 "pie pie pie"
                 ;
-    justify-items: center;
-    row-gap: 1rem;
-}
-.cabezera{
-    grid-area: cabezera;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: center;
-    img{
-        margin-left: 0.5rem;
-        width: 40%;
-        height: 85%;
-    }
-    div{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        h1{  
-            width: 50%;
-        }
-    }
-}
-.navegacion{
-    grid-area: navegacion;
-    ul{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        list-style: none;
-        li{
-            margin-left: 1rem;
-        }
-    }
-}
-.principio{
-    grid-area: principio;
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    h2{
-        padding-left: 20%;
-        width: 100%;
-    }
-    img{
-        width: 25%;
-        height: 25%;
-        display: none;
-    }
-    p{
-        width: 75%;
-    }
-}
-.noticias{
-    grid-area: noticias;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    h3{
-        padding-bottom: 1rem;
-    }
-}
-.tarjeta{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-content: space-between;
-    width: 70%;
-    h4{
-        margin-top: 0.5rem;
-        padding-left: 30%;
-        width: 100%;
-    }
-    img{
-        margin-top: 0.5rem;
-        width: 25%;
-        height: 25%;
-    }
-    p{
-        width: 30%;
-        margin: 1rem;
-    }
+    justify-items: stretch;
+    align-items: stretch;
 }
 
-.pie{
-    grid-area: pie;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    p{
-        text-align: center;
-        margin-top: 1rem;
-        width: 25%;
-    }
-    align-items: center;
-}
-/*estilos proyectos*/
-.divProyectos{
-    display: grid;
-    grid-template-rows:1fr 0.25fr 3fr  0.5fr;
-    grid-template-columns: 0.25fr 2.5fr 0.25fr  ;
-    grid-template-areas: 
-                "cabezera cabezera cabezera" 
-                "navegacion navegacion navegacion"
-                ". divProyectos ."
-                "pie pie pie"
-                ;
-    justify-items: center;
-}
 .proyec-Container{
     grid-area: divProyectos;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    align-content: space-between;
+    @include flex(wrap,row,center,center,space-between);
     h2{
+        color: $color1;
+        @include tamaño(100%,auto);
         margin-top: 3rem;
+        margin-bottom: 2rem;
         text-align: center;
-        width: 100%;
     }
 }
 .proyecto{
-    margin-top: 3rem;
-    background-color: aqua;
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
+    color: $color1;
+    margin-bottom: 3rem;
+    background-color:black;
+    @include tamaño(80%,auto);
+    @include flex(wrap,row,center,space-around,normal);
     img{
-        width: 40%;
-        height: 40%;
+        @include tamaño(6rem,6rem);
     } 
     div{
-        width: 40%;
-        height: 40%;
+        @include tamaño(10rem,10rem);
         h3{
-            width: 100%;
-            height: 10%; 
+            color: $color2;
+            text-align: center;
+            @include tamaño(10rem,4rem);
         }  
         .descripcion{
-            width: 100%;
-            height: 20%;
+            @include tamaño(100%,20%);
         }
     } 
     ul{
-        width: 30%;
-        height:30%;
+        @include tamaño(30%,30%);
         li{
             list-style: none;
+        
         }
     }
     .fecha{
-        width: 10%;
-        height: 10%;
+        @include tamaño(10%,10%);
     }
     a{
-        width: 20%;
-        height: 10%;
+        border: 0.1rem black solid;
+        background-color: $color2;
+        border-radius: 1rem;
+        @include tamaño(30%,10%);
+        text-decoration: none;
+        text-align: center;
+        &:visited{
+            color:black;
+            text-decoration: none;
+        }
     }
 }
   /*contacto*/
   .divContacto{
+    background-color: black;
     display: grid;
-    grid-template-rows:1fr 0.25fr 3fr  0.5fr;
+    grid-template-rows:0.25fr 0.25fr 1.5fr  0.5fr;
     grid-template-columns: 0.25fr 2.5fr 0.25fr  ;
     grid-template-areas: 
                 "cabezera cabezera cabezera" 
@@ -197,12 +218,7 @@
 }
 .contact-Container{
     grid-area: divContacto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    align-content: space-between;
+    @include flex(wrap,row,center,center,space-between);
     h2{
         margin-top: 3rem;
         text-align: center;
@@ -211,22 +227,22 @@
 }
 .contacto{
     margin-top: 3rem;
-    width: 80%;
-    height: 25vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    @include flex(wrap,row,center,space-around,normal);
+    @include tamaño(80%,25vh);
     img{
-        width: 80%;
-        height: 80%;
+        @include tamaño(80%,80%);
     } 
 }
 /*sobre mi*/
 .SobreMiConteiner{
+    background-color: black;
+    color: $color1;
     display: grid;
-    grid-template-rows:1fr 0.25fr 5fr  1fr 2fr  0.5fr;
+    grid-template-rows:0.25fr 0.10fr 5fr  1fr 2fr  0.5fr;
     grid-template-columns: 0.25fr 1.5fr 0.25fr  ;
     grid-template-areas: 
                 "cabezera cabezera cabezera" 
@@ -236,23 +252,20 @@
                 ". trabajos ."
                 "pie pie pie"
                 ;
-    row-gap: 2rem;
+    justify-items: center;
+    align-items: stretch;
 }
 .descripcionPersonal{
     grid-area: sobreMi;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
+    @include flex(wrap,column,center,normal,normal);
     img{
-        width: 15rem;
-        height: 15rem;
+        @include tamaño(15rem,15rem);
     }
     div{
-        width: 40%;
-        height: 40%;
+        @include tamaño(40%,40%);
         h2{
+            color: $color2;
             margin-top: 1rem;
             width: 100%;
         }
@@ -273,13 +286,11 @@
 .capasitacion{
     grid-area: formacion;
     h3{
+        color: $color2;
         text-align: center;
     }
     ul{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-content: center;
+        @include flex(wrap,column,normal,normal,center);
         li{
             margin-top: 1rem;
         }
@@ -287,22 +298,19 @@
 }
 .experienciaLaboral{
     grid-area: trabajos;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
+    @include flex(wrap,column,center,normal,normal);
     width: 80%;
     h3{
+        color: $color2;
         text-align: center;
     }
 }
 .trabajos{    
     margin-top: 2rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    @include flex(wrap,row,normal,normal,normal);
     width: 80%;
     h4{
+        color: $color2;
         width:50% ;
     }
     .tiempoTrabajo{
@@ -310,6 +318,7 @@
         width: 20%;
     }
     h5{
+        color: $color2;
         margin-top: 1rem;
         width:80%;
     }
@@ -320,8 +329,9 @@
 }
 /*mas info rpoyectos*/
 .masSobreProyectosContainer{
+    background-color: black;
     display: grid;
-    grid-template-rows:1fr 0.25fr 3fr  0.5fr;
+    grid-template-rows:0.25fr 0.25fr 1.5fr  0.5fr;
     grid-template-columns: 0.25fr 1.5fr 0.25fr  ;
     grid-template-areas: 
                 "cabezera cabezera cabezera" 
@@ -333,129 +343,92 @@
 }
 .proyectMasInfo{
     grid-area: infProyecto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
+    @include flex(wrap,column,center,normal,normal);
     img{
         padding-top: 2rem;
-        width: 50%;
-        height: 10rem;
+        @include tamaño(50%,10rem);
     }
-    h2,h3{
+    h2,h3,h4{
+        color: $color2;
         margin-top: 2rem ;
         margin-bottom: 2rem;
     }
     .descripcioProyecto{
+        color: $color1;
         width: 50%;
     }
 }
+
 .proyectoDetalles{
+    color: $color2;
     margin-top: 3rem;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    @include flex(wrap,row,center,space-around,normal);
     width: 80%;
-    align-items: center;
-    justify-content: space-around;
     .librerias{
+        color: $color1;  
         margin-left: 2rem;
     }
+    p{
+        color: $color1;
+    }
 }
-
 .repos{
     margin-top: 3rem;
-    display: flex;
-    flex-direction: row;
+    @include flex(nowrap,row,normal,space-around,normal);
     width: 80%;
-    justify-content: space-around;
     a{
-
-        text-align: center;
-        width: 5rem;
+        border: 0.1rem black solid;
+        background-color: $color2;
+        border-radius: 1rem;
+        @include tamaño(5rem,2rem);
         text-decoration: none;
-        border: 3px solid black;
-        border-radius: 10px;
+        text-align: center;
+        &:visited{
+            color:black;
+            text-decoration: none;
+        }
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px){   
    
     .contenedor{
+        background-color: black;
         display: grid;
         grid-template-rows:1fr 0.25fr 4fr  0.5fr;
         grid-template-columns: 0.25fr 2fr 1fr 0.25fr  ;
         grid-template-areas: 
                     "cabezera cabezera cabezera cabezera" 
                     "navegacion navegacion navegacion navegacion"
-                    ". principio noticias ."
+                    "principio principio noticias noticias"
                     "pie pie pie pie"
                     ;
         justify-items: center;
-        row-gap: 3rem;
+        align-items: center;
         column-gap: 1rem;
     }
     .navegacion{
-        width: 80%;
-        display: flex;
-        align-items: center;
-        
         grid-area: navegacion;
-        ul{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            list-style: none;
-            li{
-                margin-left: 4rem;
-                padding-right: 3rem;
-            }
-        }
     }        
     .principio{
         grid-area: principio;
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        @include tamaño(30rem,20rem);
+        @include flex(wrap,row,center,space-between,normal);
         h2{
             width: 20%;
             display: inline;
         }
         img{
-
-            width: 50%;
-            height: 40%;
+            @include tamaño(50%,40%);
             display: inline-block;
         }
         p{
-            margin-left: 25%;
             width: 75%;
         }
     }
-
-    .pie{
-        width: 80%;
-        grid-area: pie;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        p{
-            margin-top: 1rem;
-            width: 25%;
-        }
-        align-items: center;
-    }
-    /*estilos proyectos*/
-    .proyecto{
-        width: 40%;
-        margin-left: 3rem;
-    }
     /*contacto*/
     .contacto{
-        width: 40%;
+        width: 60%;
         margin-left: 3rem;
     }
     /*sobre mi*/
@@ -471,25 +444,17 @@
                     "pie pie pie pie"
                     ;
         justify-items: center;
-        row-gap: 3rem;
         column-gap: 1rem;
     }
     .descripcionPersonal{
         grid-area: sobreMi;
         width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        justify-content:space-around;
-        align-content: center;
+        @include flex(wrap,row,flex-start,space-around,center);
         img{
-            width: 18rem;
-            height: 18rem;
+            @include tamaño(18rem,18rem);
         }
         div{
-            width: 40%;
-            height: 40%;
+            @include tamaño(40%,40%);
             h2{
                 margin-top: 1rem;
                 width: 100%;
@@ -513,96 +478,155 @@
 @media screen and (min-width: 1024px){
     .contenedor{
         display: grid;
-        grid-template-rows:1fr 0.25fr 4fr  0.5fr;
+        grid-template-rows:1fr 0.25fr 1.5fr  0.5fr;
         grid-template-columns: 0.25fr 2fr 1fr 0.25fr  ;
         grid-template-areas: 
                     "cabezera cabezera cabezera cabezera" 
                     "navegacion navegacion navegacion navegacion"
-                    ". principio noticias ."
+                    "principio principio noticias noticias"
                     "pie pie pie pie"
                     ;
         justify-items: center;
-        row-gap: 3rem;
+        align-items: center;
         column-gap: 1rem;
     }
     .cabezera{
         grid-area: cabezera;
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        align-items: center;
-        img{
-            margin-left: 0.5rem;
-            width: 40%;
-            height: 85%;
-        }
-        div{
-            margin-left: 15rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            h1{  
-                width: 50%;
-            }
-        }
+       h1{
+        font-size: 3rem;
+       }
+       p{
+        font-size: 1.5rem;
+       }
     }
     .navegacion{
-        width: 80%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        align-self: start;
+
         grid-area: navegacion;
-        ul{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            list-style: none;
-            li{
-                margin-left: 8rem;
-                padding-right: 3rem;
-            }
-        }
     }        
     .principio{
         grid-area: principio;
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
+        @include tamaño(50rem,50rem);
+        @include flex(wrap,row,flex-start,space-around,space-around);
         h2{
+            text-align: center;
+            font-size: 2.3rem;
             width: 80%;
             display: inline;
         }
         img{
-
-            width: 40%;
-            height: 50%;
+            @include tamaño(50%,50%);
             display: inline-block;
         }
         p{
-            width: 20%;
+            font-size: 1.5rem;
+            width: 30%;
         }
     }
-
+    .noticias{
+        margin-top: 2rem;
+        color: $color1;
+        grid-area: noticias;
+        @include tamaño (50,40rem);
+        background-color: black;
+        @include flex(nowrap,column,center,normal,normal);
+        h3{
+            font-size: 2rem;
+            // padding-bottom: 1rem;
+            // padding-right: 1rem;
+        }
+    }
+    .tarjeta{
+        margin-top: 1rem;
+        background-color: black;
+        @include flex(wrap,row,flex-start,space-around,flex-start);
+        @include tamaño (100%,auto);
+        h4{
+            font-size: 1.8rem;
+            color: $color2;
+            text-align: start;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            @include tamaño (100%,auto);
+        }
+        img{
+            border-radius: 6rem;
+            @include tamaño (7rem,5rem);
+        }
+        p{
+            font-size: 1.5rem;
+            color: $color1;
+            @include tamaño (40%,auto);
+            margin-left: 1rem;
+        }
+    }
     .pie{
-        width: 80%;
+        // width: 80%;
         grid-area: pie;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
+        @include flex(nowrap,row,center,space-evenly,normal);
         p{
             margin-top: 1rem;
             width: 25%;
         }
-        align-items: center;
     }
       /*estilos proyectos*/
-      .proyecto{
-        width: 30%;
-        margin-left: 3rem;
+      .proyec-Container{
+        grid-area: divProyectos;
+        @include flex(wrap,row,center,space-around,flex-start);
+        h2{
+            font-size: 2.3rem;
+            color: $color1;
+            @include tamaño(100%,auto);
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
     }
+     .proyecto{
+         color: $color1;
+         margin-bottom: 3rem;
+         background-color:black;
+         font-size: 1.5rem;
+    @include tamaño(40rem,20rem);
+    @include flex(wrap,row,flex-end,space-around,normal);
+    img{
+        @include tamaño(6rem,6rem);
+    } 
+    div{
+        @include tamaño(10rem,10rem);
+        h3{
+            font-size: 2rem;
+            color: $color2;
+            text-align: center;
+            @include tamaño(20rem,4rem);
+        }  
+        .descripcion{
+            @include tamaño(100%,20%);
+        }
+    } 
+    ul{
+        @include tamaño(30%,30%);
+        li{
+            list-style: none;
+        
+        }
+    }
+    .fecha{
+        @include tamaño(10%,10%);
+    }
+    a{
+        border: 0.1rem black solid;
+        background-color: $color2;
+        border-radius: 1rem;
+        @include tamaño(30%,10%);
+        text-decoration: none;
+        text-align: center;
+        &:visited{
+            color:black;
+            text-decoration: none;
+        }
+    }
+}
     /*contacto*/
     .contacto{
         width: 30%;
@@ -611,7 +635,7 @@
     /*sobre mi*/
     .SobreMiConteiner{
         display: grid;
-        grid-template-rows:1fr 0.25fr 5fr 2fr  0.5fr;
+        grid-template-rows:1fr 0.5fr 2fr 2fr  0.5fr;
         grid-template-columns: 0.25fr 2fr 0.5fr 0.25fr  ;
         grid-template-areas: 
                     "cabezera cabezera cabezera cabezera"
@@ -621,30 +645,24 @@
                     "pie pie pie pie"
                     ;
         justify-items: center;
-        row-gap: 3rem;
         column-gap: 1rem;
     }
     .descripcionPersonal{
         grid-area: sobreMi;
         width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        justify-content:space-around;
-        align-content: center;
+        @include flex(wrap,row,flex-start,space-around,center);
         img{
-            width: 20rem;
-            height: 20rem;
+            @include tamaño(20rem,20rem);
         }
         div{
-            width: 40%;
-            height: 40%;
+            @include tamaño(40%,40%);
             h2{
+                font-size: 2.3rem;
                 margin-top: 1rem;
                 width: 100%;
             }
             p{
+                font-size: 1.5rem;
                 margin-top: 1rem;
                 width: 100%;
             }
@@ -654,30 +672,27 @@
             align-self:flex-start;
             width: 70%;
             li{
+                font-size: 1.5rem;
                 margin-top: 2rem;
             }
         } 
     }
     .experienciaLaboral{
         grid-area: trabajos;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-evenly;
+        @include flex(wrap,row,center,space-evenly,normal);
         width: 100%;
         h3{
+            font-size: 2rem;
             width: 80%;
             text-align: center;
         }
     }
     .trabajos{    
         margin-top: 2rem;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        @include flex(wrap,row,normal,normal,normal);
         width: 40%;
         h4{
+            font-size: 2rem;
             width:50% ;
         }
         .tiempoTrabajo{
@@ -685,24 +700,22 @@
             width: 20%;
         }
         h5{
+            font-size: 2rem;
             margin-top: 1rem;
             width:80%;
         }
         .descripcionTrabajo{
             margin-top: 1rem;
             width:80% ;
+            font-size: 1.5rem;
         }
     }
     /*mas info rpoyectos*/
 .proyectMasInfo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
+    @include flex(wrap,column,center,normal,normal);
     img{
         padding-top: 2rem;
-        width: 40%;
-        height: 18rem;
+        @include tamaño(40%,18rem);
     }
     h2,h3{
         margin-top: 2rem ;

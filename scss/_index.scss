@@ -1,0 +1,73 @@
+.contenedor{
+    background-color: $color1;
+    display: grid;
+    grid-template-rows:1fr 0.25fr 3fr  2fr  0.5fr;
+    grid-template-columns:0.25fr 1.5fr 0.25fr;
+    grid-template-areas: 
+    "cabezera cabezera cabezera" 
+    "navegacion navegacion navegacion"
+    "principio principio ."
+    ". noticias noticias"
+    "pie pie pie"
+    ;
+    justify-items: center;
+    align-items: center;
+    row-gap: 1rem;
+    .principio{
+        grid-area: principio;
+        justify-self: start;
+        border-radius: 0 2rem 2rem 0;
+        background-color: $color3;
+        @include tamaño (80%,17rem);
+        @include flex(wrap,row,center,flex-start,normal);
+        h2{
+            padding-left: 20%;
+            @include tamaño (100%,auto);
+        }
+        img{
+            @include tamaño (25%,25%);
+            display: none;
+        }
+        p{
+            @include tamaño (75%,auto);
+        }
+        .subrayado{
+            position: absolute;
+            border-top: 2px black solid;
+            border-right: 2px black solid;
+            border-bottom: 2px black solid;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            left: 0;
+            top: 23rem;
+            bottom: 0;
+            @include tamaño (75%,38%);
+        }
+    }
+    .noticias{
+        grid-area: noticias;
+        @include flex(nowrap,column,center,normal,normal);
+        h3{
+            padding-bottom: 1rem;
+        }
+    }
+    .tarjeta{
+        @include flex(wrap,row,normal,center,space-between);
+        @include tamaño (70%,auto);
+        h4{
+            margin-top: 0.5rem;
+            padding-left: 30%;
+            @include tamaño (100%,auto);
+        }
+        img{
+            @include tamaño (25%,25%);
+            margin-top: 0.5rem;
+        }
+        p{
+            @include tamaño (30%,auto);
+            margin: 1rem;
+        }
+    }
+}    
+
+
