@@ -1,3 +1,6 @@
+$color1: #ffe6cd;
+$color2:#ff8345; 
+
 @mixin tamaño($width,$heigth){
     width: $width;
     height: $heigth;    
